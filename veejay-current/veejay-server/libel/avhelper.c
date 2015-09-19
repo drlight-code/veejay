@@ -39,42 +39,42 @@ static struct
         int  id;
 } _supported_codecs[] = 
 {
-	{ "vj20", CODEC_ID_YUV420F	},
-	{ "vj22", CODEC_ID_YUV422F	},
-    { "mjpg" ,CODEC_ID_MJPEG 	},
-	{ "mjpb", CODEC_ID_MJPEGB	},
-    { "i420", CODEC_ID_YUV420	},
-    { "i422", CODEC_ID_YUV422	},
-	{ "dmb1", CODEC_ID_MJPEG	},
-	{ "jpeg", CODEC_ID_MJPEG	},
-	{ "mjpa", CODEC_ID_MJPEG	},
-	{ "mjpb", CODEC_ID_MJPEG	},
-	{ "jfif", CODEC_ID_MJPEG	},
-	{ "jfif", CODEC_ID_MJPEG	},
-	{ "png", CODEC_ID_PNG		},
-	{ "mpng", CODEC_ID_PNG		},
+	{ "vj20", AV_CODEC_ID_YUV420F	},
+	{ "vj22", AV_CODEC_ID_YUV422F	},
+    { "mjpg" ,AV_CODEC_ID_MJPEG 	},
+	{ "mjpb", AV_CODEC_ID_MJPEGB	},
+    { "i420", AV_CODEC_ID_YUV420	},
+    { "i422", AV_CODEC_ID_YUV422	},
+	{ "dmb1", AV_CODEC_ID_MJPEG	},
+	{ "jpeg", AV_CODEC_ID_MJPEG	},
+	{ "mjpa", AV_CODEC_ID_MJPEG	},
+	{ "mjpb", AV_CODEC_ID_MJPEG	},
+	{ "jfif", AV_CODEC_ID_MJPEG	},
+	{ "jfif", AV_CODEC_ID_MJPEG	},
+	{ "png",  AV_CODEC_ID_PNG		},
+	{ "mpng", AV_CODEC_ID_PNG		},
 #if LIBAVCODEC_BUILD > 4680
-	{ "sp5x", CODEC_ID_SP5X		}, 
+	{ "sp5x", AV_CODEC_ID_SP5X		}, 
 #endif
-	{ "jpgl", CODEC_ID_MJPEG 	},
-	{ "jpgl", CODEC_ID_MJPEG	},
-	{ "dvsd", CODEC_ID_DVVIDEO	},
-	{ "dvcp", CODEC_ID_DVVIDEO	},
-	{ "dv",	CODEC_ID_DVVIDEO	},
-	{ "dvhd", CODEC_ID_DVVIDEO	},
-	{ "dvp", CODEC_ID_DVVIDEO	},
-	{ "yuv", CODEC_ID_YUV420	},
-	{ "iyuv", CODEC_ID_YUV420	},
-	{ "i420", CODEC_ID_YUV420	},
-	{ "yv16", CODEC_ID_YUV422	},
-	{ "yv12", CODEC_ID_YUV420	},
-	{ "mlzo", CODEC_ID_YUVLZO	}, 
-	{ "hfyu", CODEC_ID_HUFFYUV	},
-	{ "cyuv", CODEC_ID_CYUV		},
-	{ "svq1", CODEC_ID_SVQ1		},
-	{ "svq3", CODEC_ID_SVQ3		},
-	{ "rpza", CODEC_ID_RPZA		},
-	{ "y42b", CODEC_ID_YUV422F  },
+	{ "jpgl", AV_CODEC_ID_MJPEG 	},
+	{ "jpgl", AV_CODEC_ID_MJPEG	},
+	{ "dvsd", AV_CODEC_ID_DVVIDEO	},
+	{ "dvcp", AV_CODEC_ID_DVVIDEO	},
+	{ "dv",	  AV_CODEC_ID_DVVIDEO	},
+	{ "dvhd", AV_CODEC_ID_DVVIDEO	},
+	{ "dvp",  AV_CODEC_ID_DVVIDEO	},
+	{ "yuv",  AV_CODEC_ID_YUV420	},
+	{ "iyuv", AV_CODEC_ID_YUV420	},
+	{ "i420", AV_CODEC_ID_YUV420	},
+	{ "yv16", AV_CODEC_ID_YUV422	},
+	{ "yv12", AV_CODEC_ID_YUV420	},
+	{ "mlzo", AV_CODEC_ID_YUVLZO	}, 
+	{ "hfyu", AV_CODEC_ID_HUFFYUV	},
+	{ "cyuv", AV_CODEC_ID_CYUV		},
+	{ "svq1", AV_CODEC_ID_SVQ1		},
+	{ "svq3", AV_CODEC_ID_SVQ3		},
+	{ "rpza", AV_CODEC_ID_RPZA		},
+	{ "y42b", AV_CODEC_ID_YUV422F  },
 	{ "pict", 0xffff			},
 	{ NULL  , 0,				},
 };
@@ -215,10 +215,10 @@ void	*avhelper_get_decoder( const char *filename, int dst_pixfmt, int dst_width,
 		if( !x->avformat_ctx->streams[i]->codec )
 			continue;
 
-		if( x->avformat_ctx->streams[i]->codec->codec_type > CODEC_ID_FIRST_SUBTITLE ) 
+		if( x->avformat_ctx->streams[i]->codec->codec_type > AV_CODEC_ID_FIRST_SUBTITLE ) 
 			continue;
 		
-		if( x->avformat_ctx->streams[i]->codec->codec_type < CODEC_ID_FIRST_AUDIO )
+		if( x->avformat_ctx->streams[i]->codec->codec_type < AV_CODEC_ID_FIRST_AUDIO )
 		{
 				int sup_codec = 0;
 				for( j = 0; _supported_codecs[j].name != NULL; j ++ ) {

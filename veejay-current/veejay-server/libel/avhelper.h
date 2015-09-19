@@ -20,11 +20,11 @@
 #ifndef AVHELPER_H
 #define AVHELPER_H
 
-#define CODEC_ID_YUV420 999
-#define CODEC_ID_YUV422 998
-#define CODEC_ID_YUV422F 997
-#define CODEC_ID_YUV420F 996
-#define CODEC_ID_YUVLZO 900
+#define AV_CODEC_ID_YUV420 999
+#define AV_CODEC_ID_YUV422 998
+#define AV_CODEC_ID_YUV422F 997
+#define AV_CODEC_ID_YUV420F 996
+#define AV_CODEC_ID_YUVLZO 900
 
 int 	avhelper_get_codec_by_id(int id);
 
